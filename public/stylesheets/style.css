@@ -1,0 +1,29 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: black
+}
+
+a {
+  color: #00B7FF;
+}
+
+.vendor-inventory{
+  background-color: rgb(50, 48, 48);
+  border: 2px inset rgba(255, 255, 255, 0.433);
+  height: auto;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  padding: 10px;
+}
+
+.inventory-item {
+  background-color: rgb(128, 126, 126);
+  border-radius: 5px;
+  height: 75px;
+  width: 75px;
+}
