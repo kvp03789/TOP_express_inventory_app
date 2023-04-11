@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 require('dotenv').config()
 
 const connectToDatabase = ()=> {
-    const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env,DB_PASS}@cluster0.tiieckz.mongodb.net/inventory?retryWrites=true&w=majority`
+    const mongoURI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.tiieckz.mongodb.net/inventory?retryWrites=true&w=majority`
     mongoose.set('strictQuery', 'false')
 
     async function main() {

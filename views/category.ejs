@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <%- include("./partials/head")%>
+  <body>
+    <div class="vendor-inventory">
+      <div class="nameplate">        
+        <img src="/images/npc_img_perelli.png" class="npc-img">
+        <img src="/images/nameplate_scaled.png" class="nameplate-border">
+      </div>
+      
+      <% items.forEach(item => { %> 
+        <a href="/items/<%= item.url%>">
+        <div class="inventory-item">
+          <div class="item-img">
+            <img src=<%= item.imgPath%>>
+          </div>
+          <div class="item-details">
+            <p class="item-name">
+              <%= item.name %>
+            </p>
+            <p class="item-price">
+              <%= item.price %>
+            </p>
+          </div>
+        </div>
+      </a>
+      <% }) %>
+      <%- include("./partials/nav")%>
+    </div>
+  </body>
+</html>

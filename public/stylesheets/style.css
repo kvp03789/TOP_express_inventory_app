@@ -1,29 +1,124 @@
+@font-face {
+  font-family: 'wow font';
+  src: url("../fonts/Friz.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+a{
+  text-decoration: none;
+  color: inherit
+}
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: black
+  font: 14px "wow font", Helvetica, Arial, sans-serif;
+  background-image: url("../images/bg_elwynn.jpg");
 }
 
-a {
-  color: #00B7FF;
-}
 
 .vendor-inventory{
-  background-color: rgb(50, 48, 48);
+  font-size: 1rem;
+  background-image: url("../images/bg_texture.jpg");
+  background-position: center top;
   border: 2px inset rgba(255, 255, 255, 0.433);
   height: auto;
-  width: 250px;
+  width: 735px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 8px;
   padding: 10px;
+  padding-top: 50px;
+  position:relative;
+  z-index: 1;
+}
+
+.nameplate{
+  position:absolute;
+  top: -50px;
+}
+
+.nameplate-border{
+  z-index: 3;
+  position: relative;
+}
+
+.npc-img{
+  position: absolute;
+  left: 200;
+  top: -100;
+  z-index: 0;
 }
 
 .inventory-item {
-  background-color: rgb(128, 126, 126);
+  background-color: rgb(80, 79, 79);
   border-radius: 5px;
-  height: 75px;
-  width: 75px;
+  border: 2px solid rgba(255, 255, 255, 0.412);
+  height: 100px;
+  width: 300px;
+  display: flex;
+}
+
+.inventory-item:hover{
+  background-color: rgba(121, 119, 119, 0.795);
+  cursor: pointer
+}
+
+.item-img {
+  border-radius: 5px;
+  border: 2px inset rgba(255, 255, 255, 0.433);
+  height: auto;
+}
+
+.item-details{
+  padding: 5px;
+}
+
+.nav-group{
+  position: absolute;
+  bottom: -52px;
+  left:0px;
+  display: flex;
+  gap:10px;
+}
+
+.nav-group a{
+  color: rgba(255, 255, 255, 0.34);
+  text-decoration: none;
+}
+
+a:hover{
+  color: white;
+}
+
+.tab{
+  background-image: url("../images/bg_texture.jpg");
+  background-position: center top;
+  height: 50px;
+  width: 125px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid rgba(182, 181, 181, 0.456);
+  border-left: 2px solid rgba(182, 181, 181, 0.456);
+  border-right: 2px solid rgba(182, 181, 181, 0.456);
+  position: relative;
+}
+
+.coin{
+  margin: 0;
+  padding: 0;
+  display: inline
+}
+
+.item-price{
+  display: flex;
+}
+
+.price{
+  display: flex;
+  align-items: center;
+  gap: 2px;
 }

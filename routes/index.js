@@ -1,9 +1,19 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const ItemModel = require('../models/item')
+
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', (req, res, next) => {
+
+  const categoriesArray = [] //USE THIS TO DYNAMICALLY DISPLAY TABS
+  //GET ALL CATEGORIES AND PUSH TO ARRAY, PASS ARRAY TO VIEW
+
+  ItemModel.find()
+    .then((items) => {
+      res.render('index', { title: 'Express', items })
+    })
+  
+})
 
 module.exports = router;
