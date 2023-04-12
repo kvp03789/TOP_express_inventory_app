@@ -122,3 +122,11 @@ a:hover{
   align-items: center;
   gap: 2px;
 }
+
+.uncommon{
+  color: rgb(47, 255, 54)
+}
+
+.rare {
+  color: rgb(26, 47, 241)
+}

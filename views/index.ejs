@@ -15,7 +15,14 @@
             <img src=<%= item.imgPath%>>
           </div>
           <div class="item-details">
-            <p class="item-name">
+            <p class="item-name 
+              <% if(item.rarity === "uncommon"){%>
+              uncommon<% }%>
+              <% if(item.rarity === "common"){%>
+                common<% }%>
+              <% if(item.rarity === "rare"){%>
+                rare<% }%>
+                ">
               <%= item.name %>
             </p>
             <div class="item-price">
@@ -56,7 +63,7 @@
         </div>
       </a>
       <% }) %>
-      <%- include("./partials/nav")%>
+      <%- include("./partials/nav", { categoriesArray })%>
     </div>
     </div>
   </body>

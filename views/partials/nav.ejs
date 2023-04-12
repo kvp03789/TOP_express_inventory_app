@@ -1,5 +1,5 @@
 <nav class="nav-group">
-    <div class="tab">
+    <!-- <div class="tab">
         <a href="/all">All</a>
     </div>
     <div class="tab">
@@ -10,5 +10,16 @@
     </div>
     <div class="tab">
         <a href="/consumable">Consumable</a>
+    </div> -->
+    <div class="tab">
+        <a href="/abc">alphabetical</a>
     </div>
+    <div class="tab">
+        <a href="/rarity">rarity</a>
+    </div>
+    <% categoriesArray.forEach((category) => {%>
+        <div class="tab">
+            <a href="/category/<%=category._id %>"><%= category.name%></a>
+        </div>
+    <%})%>
 </nav>
