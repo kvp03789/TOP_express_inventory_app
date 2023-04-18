@@ -1,21 +1,28 @@
 
 const formContainer = document.querySelector(".form-container")
-const addButton = document.querySelector(".create-new-item-button")
+const addButton = document.querySelectorAll(".create-new-item-button")
 const deleteItemButton = document.querySelector(".delete-container")
 const npcImage = document.querySelectorAll(".nameplate")
 const newNpcButton = document.querySelector(".npc-plus-img")
 const npcForm = document.querySelector(".npc-form-container")
 const npcPlus = document.querySelector(".npc-plus-img")
+const imageSelectDiv = document.querySelector(".img-dropdown")
+const imageSelectButton = document.querySelector(".img-dropdown-button")
+const imageGallery = document.querySelector(".image-gallery-container")
+
+imageSelectButton.addEventListener('click', () => {
+    if(imageGallery.classList.contains("hidden")){
+        imageGallery.classList.remove("hidden")
+    }else{
+        imageGallery.classList.add("hidden")
+    }
+
+    
+
+})
 
 npcImage.forEach(ele =>{
     ele.addEventListener("click", (e) => {
-        // let clickContainer;
-        // if(e.target === document.querySelector(".npc-image") || e.target === document.querySelector(".nameplate-border")){
-        // clickContainer = e.target.parentElement}
-        // else {
-        //     clickContainer = e.target
-        // }
-        //console.log(clickContainer)
         if(e.target.parentElement.nextElementSibling.classList.contains("hidden"))
             e.target.parentElement.nextElementSibling.classList.remove("hidden")
         else{
@@ -25,10 +32,6 @@ npcImage.forEach(ele =>{
 })
 
 newNpcButton.addEventListener("click", (e) => {
-    // if(e.target === document.querySelector("nameplate-border") || e.target === document.querySelector("npc-plus-img")){
-
-    console.log(e.target)
-
     if(npcForm.classList.contains("hidden")){
             npcForm.classList.remove("hidden")
             npcPlus.classList.add("rotate90")
@@ -37,15 +40,27 @@ newNpcButton.addEventListener("click", (e) => {
         npcForm.classList.add("hidden")
         npcPlus.classList.remove("rotate90")
     }
+    //hide new item/category form when new npc form is visible
+    if(!formContainer.classList.contains("hidden")){
+        formContainer.classList.add("hidden")
+    } 
 })
 
-addButton.addEventListener("click", () => {
-    if(formContainer.classList.contains("hidden")){
-        formContainer.classList.remove("hidden")
-    } else {
-        formContainer.classList.add("hidden")
+addButton.forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        if(formContainer.classList.contains("hidden")){
+            formContainer.classList.remove("hidden")
+        } else {
+            formContainer.classList.add("hidden")
+        }
+        //hide new npc form when new item/category form is visible
+        if(!npcForm.classList.contains("hidden")){
+            npcForm.classList.add("hidden")
+            npcPlus.classList.remove("rotate90")
     }
+    })
 })
+
 
 deleteItemButton.addEventListener("click", (e) => {
     if (!e) var e = window.event;

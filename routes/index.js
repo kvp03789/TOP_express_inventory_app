@@ -9,7 +9,8 @@ router.get('/delete/:id', async (req, res, next) => {
   await ItemModel.findOneAndRemove({ _id: req.params.id })  
   const items = await ItemModel.find();
   const categoriesArray = await Category.find()
-  res.render('index', { title: "APInventory", items, categoriesArray })
+  const npcsArray = await NPC.find()
+  res.render('index', { title: "APInventory", items, categoriesArray, npcsArray })
 
 })
 

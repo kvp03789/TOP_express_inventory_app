@@ -4,21 +4,39 @@ const Item = require('../models/item')
 const Category = require('../models/category')
 const NPC = require('../models/npc')
 const async = require('async')
+const multer = require('multer')
+const path = require('path')
+
+const imageFolder = `/users/clayn/documents/repos/TOP_express_inventory_app/public/images/items`
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, imageFolder)
+    },
+    filename: (req, file, cb) => {
+        console.log(file)
+        cb(null, Date.now() + path.extname(file.originalname))
+    }
+})
+
+const upload = multer({storage: storage})
 
 router.post('/category', (req, res, next) => {
     Promise.all([
         Category.find(),
-        Item.find()
+        Item.find(),
+        NPC.find()
     ]).then(async (results) => {
         const newName = new Category({name: req.body.name});
         await newName.save()
         Category.find().then(updatedCategories => {
-            res.render('index', {title: 'APInventory', items: results[1], categoriesArray: updatedCategories})
+            res.render('index', {title: 'APInventory', items: results[1], categoriesArray: updatedCategories, npcsArray: results[2]})
         })
     })
 })
 
-router.post('/', (req, res, next) => {
+router.post('/', upload.single('img'), (req, res, next) => {
+    console.log(req)
     Promise.all([
         Category.find(),
         Item.find(),
@@ -49,7 +67,7 @@ router.post('/', (req, res, next) => {
             rarity: req.body.rarity.toLowerCase(),
             availabilty: req.body.availability,
             npc: npcIdValue,
-            imgPath: req.body.imgPath
+            imgPath: '/images/items/' + req.file.filename
         })
 
         await newItem.save()

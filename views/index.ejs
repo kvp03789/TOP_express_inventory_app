@@ -5,14 +5,13 @@
   <div class="npc-container">
     <% npcsArray.forEach(npc => {%>
       
-    <div class="vendor-section"><!--VENDOR SECTION-->
+    <div class="vendor-section">
       <div class="nameplate <% if(npcsArray.indexOf(npc) !== 0){%><%= " smaller"%><% }%>">  
         <p class="npc-name-p"><%= npc.name %></p>      
         <img src="/images/npc_img_perelli.png" class="npc-img">
         <img src="/images/nameplate_scaled.png" class="nameplate-border">
       </div>
-      <div class="vendor-inventory<% if(npcsArray.indexOf(npc) !== 0){%><%= " hidden"%><% }%>">
-        
+      <div class="vendor-inventory">
         
         <% items.forEach(item => { %> 
           <% if(item.npc.equals(npc._id)){%>
@@ -83,7 +82,7 @@
         </div>
         <%- include("./partials/nav", { categoriesArray })%>
       </div>
-  </div><!--VENDOR SECTION-->
+  </div>
   <% })%>
   <div class="add-new-npc tooltip expand" data-title="Click to add new NPC">        
     <img src="/images/plus.svg" class="npc-plus-img">
@@ -92,5 +91,6 @@
   </div>
 </div>
     <%- include("./partials/form"), {categoriesArray, items}%>
+    
   </body>
 </html>

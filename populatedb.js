@@ -36,21 +36,24 @@
     console.log("--Adding items--");
     await Promise.all([
       itemCreate("Crystal Vial", 0, 1, 0, categoriesArray[0], "common", 5, npcs[0], "/images/items/item_vial.jpg"),
-      itemCreate("Lesser Healing Potion", 0, 1, 5, categoriesArray[2], "common", 3, npcs[0], "/images/items/item_potion.jpg"),
-      itemCreate("Executioner's Sword", 1, 50, 25, categoriesArray[1], "rare", 1, npcs[0], "/images/items/item_sword.jpg"),
-      itemCreate("Imbued Vial", 3, 0, 0, categoriesArray[0],"uncommon", 2, npcs[0], "/images/items/item_vial.jpg"),
-      itemCreate("Earthroot", 0, 0, 72, categoriesArray[0], "common", 3, npcs[0], "/images/items/item_root.jpg"),
-      itemCreate("Owl Bracers", 0, 35, 40, categoriesArray[1], "uncommon", 1, npcs[0], "/images/items/item_bracers.jpg")
+      // itemCreate("Lesser Healing Potion", 0, 1, 5, categoriesArray[2], "common", 3, npcs[0], "/images/item_potion.jpg"),
+      // itemCreate("Executioner's Sword", 1, 50, 25, categoriesArray[1], "rare", 1, npcs[0], "/images/item_sword.jpg"),
+      // itemCreate("Imbued Vial", 3, 0, 0, categoriesArray[0],"uncommon", 2, npcs[0], "/images/item_vial.jpg"),
+      // itemCreate("Earthroot", 0, 0, 72, categoriesArray[0], "common", 3, npcs[0], "/images/item_root.jpg"),
+      // itemCreate("Owl Bracers", 0, 35, 40, categoriesArray[1], "uncommon", 1, npcs[0], "/images/item_bracers.jpg")
     ]);
   }
 
   async function createCategories() {
     console.log("--Adding categories--")
-    await Promise.all([
-      categoryCreate("crafting"),
-      categoryCreate("equipment"),
-      categoryCreate("consumable")
-    ])
+    // await Promise.all([
+    //   categoryCreate("crafting"),
+    //   categoryCreate("equipment"),
+    //   categoryCreate("consumable")
+    // ])
+    await categoryCreate("crafting")
+    await categoryCreate("equipment")
+    await categoryCreate("consumable")
   }
 
   async function createNpcs() {
@@ -69,7 +72,6 @@
     await Category.deleteMany({})
     await NPC.deleteMany({})
     await createNpcs()
-    console.log(npcs)
     await createCategories();   
     await createItems();
   }

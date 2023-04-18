@@ -1,5 +1,5 @@
 <div class="form-container hidden">
-    <form class="add-form" action="/create" method="POST">
+    <form class="add-form" action="/create" method="POST" enctype="multipart/form-data">
         <div class="form-section">
             <label for="name">Item Name:</label>
             <input name="name">
@@ -44,6 +44,27 @@
                 <option value="<%= npc.name%>">
                     <% }) %>
             </datalist>
+        </div>
+        <!-- <div class="form-section">
+            <label for="img">Image:</label>
+            <input name="img" type="file">
+        </div> -->
+        <div class="form-section img-dropdown">
+            <div class="img-dropdown-button"><p>Image Select:</p></div>
+            <div class="image-gallery-container hidden">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+            </div>
         </div>
         <button type="submit">Add Item</button>
     </form>
