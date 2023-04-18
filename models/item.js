@@ -9,7 +9,7 @@ const itemSchema = new Schema({
     category: {type: Schema.Types.ObjectId, ref: "Category", required: true},
     rarity: {type: String, enum: ["common", "uncommon", "rare"], default: "common"},
     availability: Number,
-    imgPath: {type: String}
+    imgPath: {type: String, default: "/images/items/item_vial.jpg"}
 })
 
 //CONSIDER USING MAP SCHEMA TYPE FOR COST DENOMINATIONS!!!??

@@ -5,15 +5,17 @@
   const connectToDatabase = require('./database')
   const Item = require("./models/item");
   const Category = require("./models/category")
-  
+  const NPC = require("./models/npc")
+
   const items = [];
   const categoriesArray = []
+  const npcs = []
 
   async function categoryCreate(name) {
     const category = new Category({name: name})
     await category.save()
     categoriesArray.push(category)
-    console.log(`category added: ${category}, here's the array: ${categoriesArray}`)
+    console.log(`Added Category: ${name}`)
   }
   
   async function itemCreate(name, priceGold, priceSilver, priceCopper, category, rarity, availability, imgPath) {
@@ -23,8 +25,15 @@
     console.log(`Added item: ${name}`);
   }
 
+  async function npcCreate(name){
+    const newNpc = new NPC( {name} )
+    await newNpc.save();
+    npcs.push(newNpc)
+    console.log(`Added NPC: ${name}`)
+  }
+
   async function createItems() {
-    console.log("Adding items");
+    console.log("--Adding items--");
     await Promise.all([
       itemCreate("Crystal Vial", 0, 1, 0, categoriesArray[0], "common", 5, "/images/items/item_vial.jpg"),
       itemCreate("Lesser Healing Potion", 0, 1, 5, categoriesArray[2], "common", 3, "/images/items/item_potion.jpg"),
@@ -36,7 +45,7 @@
   }
 
   async function createCategories() {
-    console.log("Adding categories")
+    console.log("--Adding categories--")
     await Promise.all([
       categoryCreate("crafting"),
       categoryCreate("equipment"),
@@ -44,10 +53,21 @@
     ])
   }
 
+  async function createNpcs() {
+    console.log("--Adding NPC's--")
+    await Promise.all([
+      npcCreate("Barkeep Dobbins"),
+      npcCreate("Brother Danil"),
+      npcCreate("Quartermaster Hudson")
+    ])
+  }
+
   async function connectAndPopulateDb() {
     connectToDatabase()
     await Item.deleteMany({})
     await Category.deleteMany({})
+    await NPC.deleteMany({})
+    await createNpcs()
     await createCategories();   
     await createItems();
   }

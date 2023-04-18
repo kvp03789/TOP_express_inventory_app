@@ -10,8 +10,8 @@ router.get("/:cid", (req, res, next) => {
         ItemModel.find({category: `${req.params.cid}`})
             .populate("category")
       ]).then((values) => {
-        console.log(values)
-        res.render('category', { title: "APInventory", items: values[1], categoriesArray: values[0] })
+        //console.log(values)
+        res.render('index', { title: "APInventory", items: values[1], categoriesArray: values[0] })
       })
 })
 

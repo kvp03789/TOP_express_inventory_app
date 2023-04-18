@@ -9,6 +9,7 @@ const indexRouter = require('./routes/index');
 const categoryRouter = require('./routes/category')
 const rarityRouter = require('./routes/rarity')
 const abcRouter = require('./routes/abc')
+const createRouter = require('./routes/create.js')
 
 const app = express();
 
@@ -26,6 +27,7 @@ app.use('/', indexRouter);
 app.use('/category', categoryRouter);
 app.use('/rarity', rarityRouter)
 app.use('/abc', abcRouter)
+app.use('/create', createRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

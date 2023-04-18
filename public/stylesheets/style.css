@@ -5,6 +5,12 @@
   font-style: normal;
 }
 
+.npc-container{
+  display: flex;
+  flex-direction: column;
+  gap: 75px;
+}
+
 a{
   text-decoration: none;
   color: inherit
@@ -14,8 +20,18 @@ body {
   padding: 50px;
   font: 14px "wow font", Helvetica, Arial, sans-serif;
   background-image: url("../images/bg_elwynn.jpg");
+  display: flex;
+  gap: 20px;
+  padding: 50px;
 }
 
+nav{
+  max-width: 735px;
+}
+
+.add-new-nameplate{
+  position: relative;
+}
 
 .vendor-inventory{
   font-size: 1rem;
@@ -23,9 +39,11 @@ body {
   background-position: center top;
   border: 2px inset rgba(255, 255, 255, 0.433);
   height: auto;
+  max-height: 440;
   width: 735px;
+  min-width: 735px;
   display: flex;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
   flex-wrap: wrap;
   gap: 8px;
@@ -37,7 +55,7 @@ body {
 
 .nameplate{
   position:absolute;
-  top: -50px;
+  top: -5px;
 }
 
 .nameplate-border{
@@ -49,7 +67,11 @@ body {
   position: absolute;
   left: 200;
   top: -100;
-  z-index: 0;
+  z-index: 2;
+}
+
+.nameplate:hover{
+  cursor: pointer;
 }
 
 .inventory-item {
@@ -59,6 +81,14 @@ body {
   height: 100px;
   width: 300px;
   display: flex;
+  position: relative;
+}
+
+.item-name-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
 }
 
 .inventory-item:hover{
@@ -82,15 +112,46 @@ body {
   left:0px;
   display: flex;
   gap:10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.arrow{
+  width: 70px;
+}
+
+#left:hover, #right:hover{
+  cursor: pointer;
+}
+
+#left{
+  position: absolute;
+  left: -50px;
+  bottom: 0px;
+  z-index: 100;
+}
+
+#right{
+  position: absolute;
+  left: 400px;
+  bottom: 0px;
+  z-index: 100;
 }
 
 .nav-group a{
   color: rgba(255, 255, 255, 0.34);
   text-decoration: none;
+  flex: 0;
 }
 
 a:hover{
   color: white;
+}
+
+.container-tabs {
+  position: relative;
+  display: flex;
+  gap: 20px;
 }
 
 .tab{
@@ -98,6 +159,7 @@ a:hover{
   background-position: center top;
   height: 50px;
   width: 125px;
+  min-width: 125px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,6 +167,40 @@ a:hover{
   border-left: 2px solid rgba(182, 181, 181, 0.456);
   border-right: 2px solid rgba(182, 181, 181, 0.456);
   position: relative;
+}
+
+.create-tab {
+  font-size: 1.5rem;
+  width: 50px;
+}
+
+.create-tab:hover{
+  box-shadow: 0 5px 10px rgb(145, 255, 163);
+  cursor: pointer;
+}
+.create-new-item-button{
+  background-color: #cacaca93;
+  filter: invert(59%) sepia(0%) saturate(2865%) hue-rotate(169deg) brightness(87%) contrast(70%);
+}
+
+.create-new-item-button:hover{
+  filter: none;
+}
+
+div .create-new-item-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-plus {
+  height: 48px;
+  width: auto;
+  color: white
+}
+
+.create-tab:hover .create-plus {
+  color: rgb(145, 255, 244);
 }
 
 .coin{
@@ -129,4 +225,213 @@ a:hover{
 
 .rare {
   color: rgb(26, 47, 241)
+}
+
+
+.add-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 30px;
+  height: auto;
+  width: 535px;
+  padding: 25px;
+  border-bottom:1px solid rgba(255, 255, 255, 0.302)
+}
+
+.category-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 25px;
+  gap: 30px;
+}
+
+.form-section-price{
+  border: 1px solid rgba(255, 255, 255, 0.491);
+  border-radius: 5px;
+  display: flex;
+  gap: 10px;
+  padding: 15px;
+}
+
+label {
+  color: white;
+}
+
+.price-input{
+  width: 50px;
+}
+
+button{
+  height: 30px;
+  width: 125px;
+  padding: 5px;
+  font-size: 2rem;
+  font: 14px "wow font", Helvetica, Arial, sans-serif;
+  background-image: linear-gradient(rgb(110, 0, 0), rgb(177, 0, 0), rgb(110, 0, 0));
+  color: rgb(255, 196, 0);
+  border: 2px inset rgb(74, 74, 74);
+  border-radius: 5px;
+  text-shadow: rgb(44, 44, 44) 3px 0 10px;
+}
+
+button:hover {
+  background-image: linear-gradient(rgb(150, 48, 48), rgb(177, 0, 0), rgb(181, 74, 74));
+  cursor: pointer;
+}
+
+.form-container{
+  background-image: url("../images/bg_texture.jpg");
+  background-position: center top;
+  border: 2px inset rgba(255, 255, 255, 0.433);
+  display: flex;
+  flex-direction: column;
+}
+
+.delete-container{
+  position: absolute;
+  right: 0px;
+  border-radius: 5px;
+}
+
+.delete-container:hover {
+  background-color: rgba(255, 255, 255, 0.618);
+}
+
+.delete {
+  display: inline-block;
+  margin: none;
+  width: 20px;
+  height: auto;
+ 
+}
+
+.npc-plus-img{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 130px;
+  width: auto;
+  filter: invert(59%) sepia(0%) saturate(2865%) hue-rotate(169deg) brightness(87%) contrast(70%);
+  z-index: 900;
+  transition: transform .15s ease-in-out, opacity .2s;
+}
+
+.add-new-npc:hover{
+  cursor: pointer;
+}
+
+.add-new-npc:hover .npc-plus-img{
+  filter: none;
+}
+
+.npc-form-container{
+  background-image: url("../images/bg_texture.jpg");
+  background-position: center top;
+  border: 2px inset rgba(255, 255, 255, 0.433);
+  height: 100px;
+  width: 700px;
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  gap: 35px;
+  padding: 50px;
+  top: 60px;
+  left: 10px;
+}
+
+.rotate90{
+  transform:rotate(45deg)
+}
+
+
+
+/* setup tooltips */
+.tooltip {
+  position: relative;
+}
+.tooltip:before,
+.tooltip:after {
+  display: block;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 1000;
+}
+.tooltip:after {
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid rgba(0,0,0,.75); 
+  border-left: 6px solid transparent;
+  content: '';
+  height: 0;
+    top: 20px;
+    left: 200px;
+  width: 0;
+}
+.tooltip:before {
+  background: rgba(0,0,0,.75);
+  border-radius: 2px;
+  color: #fff;
+  content: attr(data-title);
+  font-size: 14px;
+  padding: 6px 10px;
+    top:20px;
+    left: 200px;
+  white-space: nowrap;
+}
+
+.tooltip.expand:before {
+  transform: scale3d(.2,.2,1);
+  transition: all .2s ease-in-out;
+}
+.tooltip.expand:after {
+  transform: translate3d(200px,6px,0);
+  transition: all .1s ease-in-out;
+}
+.tooltip.expand:hover:before,
+.tooltip.expand:hover:after {
+  opacity: 1;
+  transform: scale3d(1,1,1);
+}
+.tooltip.expand:hover:after {
+  transition: all .2s .1s ease-in-out;
+}
+
+.tooltip.expand.add-new-npc:before, .tooltip.expand.add-new-npc:after{
+  left: 50px;
+}
+
+/* swing */
+.tooltip.swing:before,
+.tooltip.swing:after {
+  transform: translate3d(0,30px,0) rotate3d(0,0,1,60deg);
+  transform-origin: 0 0;
+  transition: transform .15s ease-in-out, opacity .2s;
+}
+.tooltip.swing:after {
+  transform: translate3d(0,60px,0);
+  transition: transform .15s ease-in-out, opacity .2s;
+}
+.tooltip.swing:hover:before,
+.tooltip.swing:hover:after {
+  opacity: 1;
+  transform: translate3d(0,0,0) rotate3d(1,1,1,0deg);
+}
+
+
+
+
+
+
+
+
+
+
+.hidden{
+  display:none
 }

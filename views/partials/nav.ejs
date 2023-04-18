@@ -1,25 +1,47 @@
+
 <nav class="nav-group">
-    <!-- <div class="tab">
-        <a href="/all">All</a>
-    </div>
-    <div class="tab">
-        <a href="/cafting">Crafting</a>
-    </div>
-    <div class="tab">
-        <a href="/equipment">Equipment</a>
-    </div>
-    <div class="tab">
-        <a href="/consumable">Consumable</a>
-    </div> -->
-    <div class="tab">
+
+    <div class="tab static-tabs">
         <a href="/abc">alphabetical</a>
     </div>
-    <div class="tab">
+    <div class="tab static-tabs">
         <a href="/rarity">rarity</a>
     </div>
-    <% categoriesArray.forEach((category) => {%>
-        <div class="tab">
-            <a href="/category/<%=category._id %>"><%= category.name%></a>
+    <div class="container-tabs">
+        <% if(categoriesArray.length > 3){ %>
+        <img src="../images/left.png" class="arrow hidden" id="left">
+        <img src="../images/right.png" class="arrow hidden" id="right">
+        <% } %>
+        <!-- <div class="tab dynamic-tabs">
+            <a href="/">TEST1</a>
         </div>
-    <%})%>
+        <div class="tab dynamic-tabs">
+            <a href="/">TEST2</a>
+        </div>
+        <div class="tab dynamic-tabs">
+            <a href="/">TEST3</a>
+        </div>
+        <div class="tab dynamic-tabs">
+            <a href="/">TEST4</a>
+        </div>
+        <div class="tab dynamic-tabs">
+            <a href="/">TEST5</a>
+        </div>
+        <div class="tab dynamic-tabs">
+            <a href="/">TEST6</a>
+        </div>
+        <div class="tab dynamic-tabs">
+            <a href="/">TEST7</a>
+        </div>
+        <div class="tab dynamic-tabs">
+            <a href="/">TEST8</a>
+        </div> -->
+        <% categoriesArray.forEach((category) => {%>
+            <div class="tab dynamic-tabs">
+                <a href="/category/<%=category._id %>"><%= category.name%></a>
+            </div>
+        <%})%>
+    </div>
 </nav>
+<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/2.1.1/overlayscrollbars.esm.js" defer></script> -->
+<script type="module" src="/javascripts/script.js" defer="true"></script>

@@ -1,0 +1,57 @@
+<div class="form-container hidden">
+    <form class="add-form" action="/create" method="POST">
+        <div class="form-section">
+            <label for="name">Item Name:</label>
+            <input name="name">
+        </div>
+        <div class="form-section-price">
+            <div class="form-section">
+                <label for="priceGold"><img src="/images/coin_gold.webp" class="coin"></label>
+                <input name="priceGold" type="number" class="price-input">
+            </div>
+            <div class="form-section">
+                <label for="priceSilver"><img src="/images/coin_silver.webp" class="coin"></label>
+                <input name="priceSilver" type="number" class="price-input">
+            </div>
+            <div class="form-section">
+                <label for="priceCopper"><img src="/images/coin_copper.webp" class="coin"></label>
+                <input name="priceCopper" type="number" class="price-input">
+            </div>
+        </div>
+        <div class="form-section">
+            <label for="category">Item Category:</label>
+            <input name="category" list="category-list">
+            <datalist id="category-list">
+                <% categoriesArray.forEach(cat => {%>
+                <option value="<%= cat.name%>">
+                    <% }) %>
+            </datalist>
+        </div>
+        <div class="form-section">
+            <label for="rarity">Item Rarity:</label>
+            <input list="rarity" name="rarity">
+                <datalist id="rarity">
+                    <option value="uncommon">
+                    <option value="common">
+                    <option value="rare">
+                </datalist>
+        </div>
+        <div class="form-section">
+            <label>Vendor:</label>
+            <input name="vendor" list="vendor-list">
+            <datalist id="vendor-list">
+                <% npcsArray.forEach(npc => {%>
+                <option value="<%= npc.name%>">
+                    <% }) %>
+            </datalist>
+        </div>
+        <button type="submit">Add Item</button>
+    </form>
+    <form class="category-form" action="/create/category" method="POST">
+        <div class="form-section">
+            <label for="name">Category Name:</label>
+            <input name="name">
+        </div>
+        <button type="submit">Add Category</button>
+    </form>
+</div>

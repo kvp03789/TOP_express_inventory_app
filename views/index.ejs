@@ -2,29 +2,40 @@
 <html>
   <%- include("./partials/head")%>
   <body>
+    <div class="npc-container">
+    <div class="vendor-section">
+    <div class="nameplate">        
+      <img src="/images/npc_img_perelli.png" class="npc-img">
+      <img src="/images/nameplate_scaled.png" class="nameplate-border">
+    </div>
     <div class="vendor-inventory">
-      <div class="nameplate">        
-        <img src="/images/npc_img_perelli.png" class="npc-img">
-        <img src="/images/nameplate_scaled.png" class="nameplate-border">
-      </div>
+      
       
       <% items.forEach(item => { %> 
-        <a href="/items/<%= item.url%>">
         <div class="inventory-item">
+
           <div class="item-img">
             <img src=<%= item.imgPath%>>
           </div>
+
           <div class="item-details">
-            <p class="item-name 
-              <% if(item.rarity === "uncommon"){%>
-              uncommon<% }%>
-              <% if(item.rarity === "common"){%>
-                common<% }%>
-              <% if(item.rarity === "rare"){%>
-                rare<% }%>
-                ">
-              <%= item.name %>
-            </p>
+            <div class="item-name-container">
+              <p class="item-name 
+                <% if(item.rarity === "uncommon"){%>
+                uncommon<% }%>
+                <% if(item.rarity === "common"){%>
+                  common<% }%>
+                <% if(item.rarity === "rare"){%>
+                  rare<% }%>
+                  ">
+                <%= item.name %>
+              </p>
+              <div class="delete-container">
+                <a href="/delete/<%=item._id%>">
+                  <img src="/images/delete_icon.png" class="delete">
+                </a>
+              </div>
+            </div>
             <div class="item-price">
               <% if(item.priceGold) {%>
                 <div class="price-gold price">
@@ -57,14 +68,23 @@
               </div>
                 <% }%>
             </div>
-
           </div>
-          
         </div>
-      </a>
       <% }) %>
+      <div class="inventory-item create-new-item-button tooltip expand" data-title="Click to add new item or category">
+        <div>
+          <img src="/images/plus.svg" class="create-plus">
+        </div>
+      </div>
       <%- include("./partials/nav", { categoriesArray })%>
     </div>
-    </div>
+  </div>
+  <div class="add-new-npc tooltip expand" data-title="Click to add new NPC">        
+    <img src="/images/plus.svg" class="npc-plus-img">
+    <img src="/images/nameplate_scaled.png" class="nameplate-border">
+    <%- include("./partials/npcform") %>
+  </div>
+</div>
+    <%- include("./partials/form"), {categoriesArray, items}%>
   </body>
 </html>
