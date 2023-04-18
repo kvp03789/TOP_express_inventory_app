@@ -9,6 +9,7 @@ const itemSchema = new Schema({
     category: {type: Schema.Types.ObjectId, ref: "Category", required: true},
     rarity: {type: String, enum: ["common", "uncommon", "rare"], default: "common"},
     availability: Number,
+    npc: {type: Schema.Types.ObjectId, ref: "npc", required: true},
     imgPath: {type: String, default: "/images/items/item_vial.jpg"}
 })
 

@@ -8,7 +8,7 @@
 .npc-container{
   display: flex;
   flex-direction: column;
-  gap: 75px;
+  gap: 105px;
 }
 
 a{
@@ -33,6 +33,11 @@ nav{
   position: relative;
 }
 
+.vendor-section{
+  position: relative;
+  margin-top: 20px;
+}
+
 .vendor-inventory{
   font-size: 1rem;
   background-image: url("../images/bg_texture.jpg");
@@ -55,7 +60,8 @@ nav{
 
 .nameplate{
   position:absolute;
-  top: -5px;
+  top: -45px;
+  left: -10px;
 }
 
 .nameplate-border{
@@ -65,7 +71,7 @@ nav{
 
 .npc-img{
   position: absolute;
-  left: 200;
+  left: 190;
   top: -100;
   z-index: 2;
 }
@@ -345,8 +351,20 @@ button:hover {
   left: 10px;
 }
 
+.npc-name-p{
+  font-size: 1.2rem;
+  position: absolute;
+  left: 45%;
+  top: 15px;
+  color: rgb(222, 200, 0);
+  z-index: 900;
+}
+
+
+
 .rotate90{
-  transform:rotate(45deg)
+  transform:rotate(45deg);
+  filter: none;
 }
 
 

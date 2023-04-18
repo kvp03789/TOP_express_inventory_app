@@ -3,28 +3,32 @@ const formContainer = document.querySelector(".form-container")
 const addButton = document.querySelector(".create-new-item-button")
 const deleteItemButton = document.querySelector(".delete-container")
 const npcImage = document.querySelectorAll(".nameplate")
-const newNpcButton = document.querySelector(".add-new-npc")
+const newNpcButton = document.querySelector(".npc-plus-img")
 const npcForm = document.querySelector(".npc-form-container")
 const npcPlus = document.querySelector(".npc-plus-img")
 
 npcImage.forEach(ele =>{
     ele.addEventListener("click", (e) => {
-        let clickContainer;
-        if(e.target === document.querySelector(".npc-image") || e.target === document.querySelector(".nameplate-border")){
-        clickContainer = e.target.parentElement}
-        else {
-            clickContainer = e.target
-        }
-        console.log(clickContainer)
-        if(clickContainer.nextElementSibling.classList.contains("hidden"))
-            clickContainer.nextElementSibling.classList.remove("hidden")
+        // let clickContainer;
+        // if(e.target === document.querySelector(".npc-image") || e.target === document.querySelector(".nameplate-border")){
+        // clickContainer = e.target.parentElement}
+        // else {
+        //     clickContainer = e.target
+        // }
+        //console.log(clickContainer)
+        if(e.target.parentElement.nextElementSibling.classList.contains("hidden"))
+            e.target.parentElement.nextElementSibling.classList.remove("hidden")
         else{
-            clickContainer.nextElementSibling.classList.add("hidden")
+            e.target.parentElement.nextElementSibling.classList.add("hidden")
         }
     })
 })
 
-newNpcButton.addEventListener("click", () => {
+newNpcButton.addEventListener("click", (e) => {
+    // if(e.target === document.querySelector("nameplate-border") || e.target === document.querySelector("npc-plus-img")){
+
+    console.log(e.target)
+
     if(npcForm.classList.contains("hidden")){
             npcForm.classList.remove("hidden")
             npcPlus.classList.add("rotate90")
@@ -45,7 +49,6 @@ addButton.addEventListener("click", () => {
 
 deleteItemButton.addEventListener("click", (e) => {
     if (!e) var e = window.event;
-    e.cancelBubble = true;
     if (e.stopPropagation) e.stopPropagation();
     deleteHandler(e)
     

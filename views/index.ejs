@@ -2,83 +2,89 @@
 <html>
   <%- include("./partials/head")%>
   <body>
-    <div class="npc-container">
-    <div class="vendor-section">
-    <div class="nameplate">        
-      <img src="/images/npc_img_perelli.png" class="npc-img">
-      <img src="/images/nameplate_scaled.png" class="nameplate-border">
-    </div>
-    <div class="vendor-inventory">
+  <div class="npc-container">
+    <% npcsArray.forEach(npc => {%>
       
-      
-      <% items.forEach(item => { %> 
-        <div class="inventory-item">
-
-          <div class="item-img">
-            <img src=<%= item.imgPath%>>
-          </div>
-
-          <div class="item-details">
-            <div class="item-name-container">
-              <p class="item-name 
-                <% if(item.rarity === "uncommon"){%>
-                uncommon<% }%>
-                <% if(item.rarity === "common"){%>
-                  common<% }%>
-                <% if(item.rarity === "rare"){%>
-                  rare<% }%>
-                  ">
-                <%= item.name %>
-              </p>
-              <div class="delete-container">
-                <a href="/delete/<%=item._id%>">
-                  <img src="/images/delete_icon.png" class="delete">
-                </a>
-              </div>
-            </div>
-            <div class="item-price">
-              <% if(item.priceGold) {%>
-                <div class="price-gold price">
-                  <div>
-                    <p><%= item.priceGold %></p>
-                  </div>
-                  <div>
-                    <img src="/images/coin_gold.webp" class="coin">
-                  </div>
-                </div>
-                  <% }%>
-              <% if(item.priceSilver) {%>
-                <div class="price-silver price">
-                  <div>
-                    <p><%= item.priceSilver %></p>
-                  </div>
-                  <div>
-                    <img src="/images/coin_silver.webp" class="coin">
-                  </div>
-                </div>
-                  <% }%>
-              <% if(item.priceCopper) {%>
-              <div class="price-copper price">
-                <div>
-                  <p><%= item.priceCopper %></p>
-                </div>
-                <div>
-                  <img src="/images/coin_copper.webp" class="coin">
-                </div>
-              </div>
-                <% }%>
-            </div>
-          </div>
-        </div>
-      <% }) %>
-      <div class="inventory-item create-new-item-button tooltip expand" data-title="Click to add new item or category">
-        <div>
-          <img src="/images/plus.svg" class="create-plus">
-        </div>
+    <div class="vendor-section"><!--VENDOR SECTION-->
+      <div class="nameplate <% if(npcsArray.indexOf(npc) !== 0){%><%= " smaller"%><% }%>">  
+        <p class="npc-name-p"><%= npc.name %></p>      
+        <img src="/images/npc_img_perelli.png" class="npc-img">
+        <img src="/images/nameplate_scaled.png" class="nameplate-border">
       </div>
-      <%- include("./partials/nav", { categoriesArray })%>
-    </div>
-  </div>
+      <div class="vendor-inventory<% if(npcsArray.indexOf(npc) !== 0){%><%= " hidden"%><% }%>">
+        
+        
+        <% items.forEach(item => { %> 
+          <% if(item.npc.equals(npc._id)){%>
+          <div class="inventory-item">
+
+            <div class="item-img">
+              <img src=<%= item.imgPath%>>
+            </div>
+
+            <div class="item-details">
+              <div class="item-name-container">
+                <p class="item-name 
+                  <% if(item.rarity === "uncommon"){%>
+                  uncommon<% }%>
+                  <% if(item.rarity === "common"){%>
+                    common<% }%>
+                  <% if(item.rarity === "rare"){%>
+                    rare<% }%>
+                    ">
+                  <%= item.name %>
+                </p>
+                <div class="delete-container">
+                  <a href="/delete/<%=item._id%>">
+                    <img src="/images/delete_icon.png" class="delete">
+                  </a>
+                </div>
+              </div>
+              <div class="item-price">
+                <% if(item.priceGold) {%>
+                  <div class="price-gold price">
+                    <div>
+                      <p><%= item.priceGold %></p>
+                    </div>
+                    <div>
+                      <img src="/images/coin_gold.webp" class="coin">
+                    </div>
+                  </div>
+                    <% }%>
+                <% if(item.priceSilver) {%>
+                  <div class="price-silver price">
+                    <div>
+                      <p><%= item.priceSilver %></p>
+                    </div>
+                    <div>
+                      <img src="/images/coin_silver.webp" class="coin">
+                    </div>
+                  </div>
+                    <% }%>
+                <% if(item.priceCopper) {%>
+                <div class="price-copper price">
+                  <div>
+                    <p><%= item.priceCopper %></p>
+                  </div>
+                  <div>
+                    <img src="/images/coin_copper.webp" class="coin">
+                  </div>
+                </div>
+                  <% }%>
+              </div>
+            </div>
+          </div>
+          <% }%>
+        <% }) %>
+        <div class="inventory-item create-new-item-button tooltip expand" data-title="Click to add new item or category">
+          <div>
+            <img src="/images/plus.svg" class="create-plus">
+          </div>
+        </div>
+        <%- include("./partials/nav", { categoriesArray })%>
+      </div>
+  </div><!--VENDOR SECTION-->
+  <% })%>
   <div class="add-new-npc tooltip expand" data-title="Click to add new NPC">        
     <img src="/images/plus.svg" class="npc-plus-img">
     <img src="/images/nameplate_scaled.png" class="nameplate-border">

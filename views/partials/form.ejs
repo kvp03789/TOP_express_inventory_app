@@ -37,9 +37,9 @@
                 </datalist>
         </div>
         <div class="form-section">
-            <label>Vendor:</label>
-            <input name="vendor" list="vendor-list">
-            <datalist id="vendor-list">
+            <label for="npc">Vendor:</label>
+            <input name="npc" list="npc-list">
+            <datalist id="npc-list">
                 <% npcsArray.forEach(npc => {%>
                 <option value="<%= npc.name%>">
                     <% }) %>
