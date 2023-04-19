@@ -4,22 +4,22 @@ const Item = require('../models/item')
 const Category = require('../models/category')
 const NPC = require('../models/npc')
 const async = require('async')
-const multer = require('multer')
-const path = require('path')
+// const multer = require('multer')
+// const path = require('path')
 
-const imageFolder = `/users/clayn/documents/repos/TOP_express_inventory_app/public/images/items`
+// const imageFolder = `/users/clayn/documents/repos/TOP_express_inventory_app/public/images/items`
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, imageFolder)
-    },
-    filename: (req, file, cb) => {
-        console.log(file)
-        cb(null, Date.now() + path.extname(file.originalname))
-    }
-})
+// const storage = multer.diskStorage({
+//     destination: (req, file, cb) => {
+//         cb(null, imageFolder)
+//     },
+//     filename: (req, file, cb) => {
+//         console.log(file)
+//         cb(null, Date.now() + path.extname(file.originalname))
+//     }
+// })
 
-const upload = multer({storage: storage})
+// const upload = multer({storage: storage})
 
 router.post('/category', (req, res, next) => {
     Promise.all([
@@ -35,8 +35,7 @@ router.post('/category', (req, res, next) => {
     })
 })
 
-router.post('/', upload.single('img'), (req, res, next) => {
-    console.log(req)
+router.post('/', (req, res, next) => {
     Promise.all([
         Category.find(),
         Item.find(),
@@ -64,10 +63,10 @@ router.post('/', upload.single('img'), (req, res, next) => {
             priceSilver: parseInt(req.body.priceSilver),
             priceCopper: parseInt(req.body.priceCopper),
             category: categoryIdValue,
-            rarity: req.body.rarity.toLowerCase(),
+            rarity: req.body.rarity,
             availabilty: req.body.availability,
             npc: npcIdValue,
-            imgPath: '/images/items/' + req.file.filename
+            imgPath: `/images/items/${req.body.img}` 
         })
 
         await newItem.save()

@@ -9,20 +9,67 @@ const npcPlus = document.querySelector(".npc-plus-img")
 const imageSelectDiv = document.querySelector(".img-dropdown")
 const imageSelectButton = document.querySelector(".img-dropdown-button")
 const imageGallery = document.querySelector(".image-gallery-container")
+const imageGalleryImg = document.querySelectorAll(".image-gallery-img")
+const addForm = document.querySelector(".add-form")
+const hiddenInput = document.querySelector(".hidden-input")
+const npcName = document.querySelectorAll(".npc-name-p")
 
-imageSelectButton.addEventListener('click', () => {
+//form stuff
+// function handleAddForm(form) {
+//     let inputValue = form.inputbox.value;
+//     let formData = new FormData(form);
+//     let object = {};
+//     formData.forEach(function(value, key){
+//         object[key] = value;
+//     });
+//     var json = JSON.stringify(object);
+//     alert(json);
+
+//     alert(JSON.stringify(Object.fromEntries(formData)));
+// }
+// 
+// addForm.addEventListener("submit", (e) => {
+//     //handleAddForm(addForm)
+// })
+
+npcName.forEach(nameOfNpc => {
+    nameOfNpc.addEventListener("click", (e) => {
+        const ele = e.target
+        const parntEle = e.target.parentElement
+        ele.nextElementSibling.classList.remove("hidden")
+})})
+
+document.querySelectorAll(".npc-edit-name-cancel").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+        console.log(e.target)
+        e.target.closest("#adad").classList.add("hidden")
+    })
+})
+
+imageSelectButton.addEventListener('click', (e) => {
     if(imageGallery.classList.contains("hidden")){
         imageGallery.classList.remove("hidden")
     }else{
         imageGallery.classList.add("hidden")
     }
+})
 
+imageGalleryImg.forEach(img => {
+    img.addEventListener("click", (e) => {
+        // const input = document.querySelector("img-input")
+        // const imgSelect = document.querySelector(".img-input")
+        let value = e.target.dataset.path;
+        imageGallery.classList.add("hidden")
+        hiddenInput.value = value;
+    })
     
-
 })
 
 npcImage.forEach(ele =>{
     ele.addEventListener("click", (e) => {
+        if(e.target.classList.contains("npc-name-p") || e.target.classList.contains("npc-edit-name" )){
+            return
+        }
         if(e.target.parentElement.nextElementSibling.classList.contains("hidden"))
             e.target.parentElement.nextElementSibling.classList.remove("hidden")
         else{

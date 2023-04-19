@@ -1,5 +1,5 @@
 <div class="form-container hidden">
-    <form class="add-form" action="/create" method="POST" enctype="multipart/form-data">
+    <form class="add-form" action="/create" method="POST">
         <div class="form-section">
             <label for="name">Item Name:</label>
             <input name="name">
@@ -7,15 +7,15 @@
         <div class="form-section-price">
             <div class="form-section">
                 <label for="priceGold"><img src="/images/coin_gold.webp" class="coin"></label>
-                <input name="priceGold" type="number" class="price-input">
+                <input name="priceGold" type="number" value="0" min="0" max="999" class="price-input">
             </div>
             <div class="form-section">
                 <label for="priceSilver"><img src="/images/coin_silver.webp" class="coin"></label>
-                <input name="priceSilver" type="number" class="price-input">
+                <input name="priceSilver" type="number" value="0" min="0" max="99" class="price-input">
             </div>
             <div class="form-section">
                 <label for="priceCopper"><img src="/images/coin_copper.webp" class="coin"></label>
-                <input name="priceCopper" type="number" class="price-input">
+                <input name="priceCopper" type="number" value="0" min="0" max="99" class="price-input">
             </div>
         </div>
         <div class="form-section">
@@ -52,22 +52,27 @@
         <div class="form-section img-dropdown">
             <div class="img-dropdown-button"><p>Image Select:</p></div>
             <div class="image-gallery-container hidden">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
-                <img src="/images/items/item_cape.jpg" class="image-gallery-img">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img" data-path="item_cape.jpg">
+                <img src="/images/items/item_bandage.jpg" class="image-gallery-img" data-path="item_bandage.jpg">
+                <img src="/images/items/item_boots.jpg" class="image-gallery-img" data-path="item_boots.jpg">
+                <img src="/images/items/item_bow.jpg" class="image-gallery-img" data-path="item_bow.jpg">
+                <img src="/images/items/item_bracers.jpg" class="image-gallery-img" data-path="item_bracers.jpg">
+                <img src="/images/items/item_cape.jpg" class="image-gallery-img" data-path="item_cape.jpg">
+                <img src="/images/items/item_dust.jpg" class="image-gallery-img" data-path="item_dust.jpg">
+                <img src="/images/items/item_potion.jpg" class="image-gallery-img" data-path="item_potion.jpg">
+                <img src="/images/items/item_root.jpg" class="image-gallery-img"data-path="item_root.jpg">
+                <img src="/images/items/item_scroll.jpg" class="image-gallery-img" data-path="item_scroll.jpg">
+                <img src="/images/items/item_sword.jpg" class="image-gallery-img" data-path="item_sword.jpg">
+                <img src="/images/items/item_vial.jpg" class="image-gallery-img" data-path="item_vial.jpg">
             </div>
+        </div>
+        <div class="hidden form-section img-input">
+            <input name="img" class="hidden-input">
         </div>
         <button type="submit">Add Item</button>
     </form>
+
+
     <form class="category-form" action="/create/category" method="POST">
         <div class="form-section">
             <label for="name">Category Name:</label>
