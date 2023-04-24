@@ -349,6 +349,8 @@ button:hover {
   padding: 50px;
   top: 60px;
   left: 10px;
+  transform: translatex(0);
+  transition: transform ease-out 1s;
 }
 
 .npc-name-p{
@@ -426,6 +428,7 @@ button:hover {
   left: 75%;
   top: 30px;
 }
+
 
 .rotate90{
   transform:rotate(45deg);
@@ -517,4 +520,8 @@ button:hover {
 
 .hidden{
   display:none
+}
+
+.hiddener{
+  transform: translateX(-100%)
 }

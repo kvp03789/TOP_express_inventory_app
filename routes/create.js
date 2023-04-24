@@ -88,4 +88,18 @@ router.post('/npc', async (req, res, next)=> {
     })
 })
 
+router.post('/edit/npc', async (req, res, next)=> {
+    const newNpcName = req.body.newNpcName
+    const oldNpcName = req.body.oldNpcName
+    console.log(newNpcName, oldNpcName)
+    let doc = await NPC.findOneAndUpdate({name: oldNpcName}, {name: newNpcName})
+    Promise.all([
+        NPC.find(),
+        Category.find(),
+        Item.find()
+    ]).then(values => {
+        res.render('index', {title: "APInventory", items: values[2], categoriesArray:  values[1], npcsArray: values[0]})
+    })
+})
+
 module.exports = router;

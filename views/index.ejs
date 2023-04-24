@@ -9,11 +9,14 @@
       <div class="nameplate <% if(npcsArray.indexOf(npc) !== 0){%><%= " smaller"%><% }%>">  
         <p class="npc-name-p"><%= npc.name %></p> 
         <div class="change-hidden-form-container hidden" id="adad">  
-          <input class="npc-edit-name-input"> 
+          <form method="POST" action="/create/edit/npc">
+          <input class="npc-edit-name-input" name="newNpcName" value=<%-`"${npc.name}"`%>> 
+          <input class="npc-edit-name-input hidden" name="oldNpcName" value=<%-`"${npc.name}"`%>> 
           <button class="npc-edit-name npc-edit-name-cancel">-</button>
-          <button class="npc-edit-name npc-edit-name-add">+</button>
+          <button type="submit" class="npc-edit-name npc-edit-name-add">+</button>
+          </form>
         </div>  
-        <img src="/images/npc_img_perelli.png" class="npc-img">
+        <img src="/images/npc_img_perelli.png" class="npc-img npc-img-filter">
         <img src="/images/nameplate_scaled.png" class="nameplate-border">
       </div>
       <div class="vendor-inventory">

@@ -36,15 +36,28 @@ npcName.forEach(nameOfNpc => {
     nameOfNpc.addEventListener("click", (e) => {
         const ele = e.target
         const parntEle = e.target.parentElement
+        let textContent = e.target.closest(".npc-name-p").innerText
+        console.log(textContent)
+        
+        ele.nextElementSibling.setAttribute("placeholder", textContent) 
         ele.nextElementSibling.classList.remove("hidden")
 })})
 
 document.querySelectorAll(".npc-edit-name-cancel").forEach(btn => {
     btn.addEventListener("click", (e) => {
+        e.preventDefault();
         console.log(e.target)
         e.target.closest("#adad").classList.add("hidden")
     })
 })
+
+// document.querySelectorAll(".npc-edit-name-add").forEach(btn => {
+//     btn.addEventListener("click", (e) => {
+//         console.log(e.target)
+//         let response = fetch('/create/edit/npc')
+        
+//     })
+// })
 
 imageSelectButton.addEventListener('click', (e) => {
     if(imageGallery.classList.contains("hidden")){
@@ -67,7 +80,7 @@ imageGalleryImg.forEach(img => {
 
 npcImage.forEach(ele =>{
     ele.addEventListener("click", (e) => {
-        if(e.target.classList.contains("npc-name-p") || e.target.classList.contains("npc-edit-name" )){
+        if(e.target.classList.contains("npc-name-p") || e.target.classList.contains("npc-edit-name" ) || e.target.classList.contains("npc-edit-name-input")){
             return
         }
         if(e.target.parentElement.nextElementSibling.classList.contains("hidden"))
@@ -79,11 +92,13 @@ npcImage.forEach(ele =>{
 })
 
 newNpcButton.addEventListener("click", (e) => {
-    if(npcForm.classList.contains("hidden")){
+    if(npcForm.classList.contains("hiddener")){
+            npcForm.classList.remove("hiddener")
             npcForm.classList.remove("hidden")
             npcPlus.classList.add("rotate90")
     }
     else{
+        npcForm.classList.add("hiddener")
         npcForm.classList.add("hidden")
         npcPlus.classList.remove("rotate90")
     }
